@@ -1,6 +1,8 @@
 import { Twitter, Instagram, Facebook, Youtube } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const socialLinks = [
     { name: 'Twitter', icon: Twitter, href: '#' },
     { name: 'Instagram', icon: Instagram, href: '#' },
@@ -18,7 +20,7 @@ const Footer = () => {
               SciFi BCN
             </h3>
             <p className="text-muted-foreground">
-              Barcelona's premier science fiction film festival, exploring the future of cinema since 2020.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -36,18 +38,18 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-foreground">{t('footer.quicklinks')}</h4>
             <ul className="space-y-2">
-              <li><a href="#schedule" className="text-muted-foreground hover:text-primary transition-colors">Schedule</a></li>
-              <li><a href="#films" className="text-muted-foreground hover:text-primary transition-colors">Films</a></li>
-              <li><a href="#location" className="text-muted-foreground hover:text-primary transition-colors">Location</a></li>
-              <li><a href="#tickets" className="text-muted-foreground hover:text-primary transition-colors">Tickets</a></li>
+              <li><a href="#schedule" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.schedule')}</a></li>
+              <li><a href="#films" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.films')}</a></li>
+              <li><a href="#location" className="text-muted-foreground hover:text-primary transition-colors">{t('location.title')}</a></li>
+              <li><a href="#tickets" className="text-muted-foreground hover:text-primary transition-colors">{t('footer.tickets')}</a></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">Contact</h4>
+            <h4 className="text-lg font-semibold text-foreground">{t('footer.contact')}</h4>
             <div className="space-y-2 text-muted-foreground">
               <p>info@scifibcn.com</p>
               <p>+34 93 426 18 50</p>
@@ -58,12 +60,12 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © 2024 SciFi BCN Festival. All rights reserved.
+            {t('footer.copyright')}
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Press Kit</a>
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">{t('footer.privacy')}</a>
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">{t('footer.terms')}</a>
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">{t('footer.press')}</a>
           </div>
         </div>
       </div>

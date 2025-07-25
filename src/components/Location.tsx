@@ -1,29 +1,31 @@
 import { Card } from '@/components/ui/card';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 import venueExterior from '@/assets/venue-exterior.jpg';
 import venueInterior from '@/assets/venue-interior.jpg';
 
 const Location = () => {
+  const { t } = useTranslation();
   const venueDetails = [
     {
       icon: MapPin,
-      label: "Address",
+      label: t('location.address'),
       value: "Carrer de Lleida, 59, 08004 Barcelona, Spain"
     },
     {
       icon: Phone,
-      label: "Phone",
+      label: t('location.phone'),
       value: "+34 93 426 18 50"
     },
     {
       icon: Mail,
-      label: "Email",
+      label: t('location.email'),
       value: "info@scifibcn.com"
     },
     {
       icon: Clock,
-      label: "Festival Hours",
-      value: "10:00 AM - 11:00 PM Daily"
+      label: t('location.hours'),
+      value: t('location.hours.value')
     }
   ];
 
@@ -32,10 +34,10 @@ const Location = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-            Festival Location
+            {t('location.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Join us at the stunning CineBaix venue in the heart of Barcelona, featuring state-of-the-art screening rooms and exhibition spaces.
+            {t('location.description')}
           </p>
         </div>
 
@@ -43,7 +45,7 @@ const Location = () => {
           {/* Venue Information */}
           <div className="space-y-8">
             <Card className="p-8 bg-card border-border shadow-card">
-              <h3 className="text-2xl font-bold mb-6 text-foreground">CineBaix Barcelona</h3>
+              <h3 className="text-2xl font-bold mb-6 text-foreground">{t('location.venue')}</h3>
               
               <div className="space-y-6">
                 {venueDetails.map((detail, index) => (
@@ -61,8 +63,7 @@ const Location = () => {
 
               <div className="mt-8 pt-6 border-t border-border">
                 <p className="text-sm text-muted-foreground">
-                  Public transportation: Metro L1 (Hostafrancs), Bus lines H16, 23, 32. 
-                  Parking available nearby at Parking BSM Sants.
+                  {t('location.transport')}
                 </p>
               </div>
             </Card>
@@ -77,7 +78,7 @@ const Location = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="font-semibold">Exterior View</p>
+                  <p className="font-semibold">{t('location.exterior')}</p>
                 </div>
               </div>
               <div className="relative overflow-hidden rounded-lg group">
@@ -88,7 +89,7 @@ const Location = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="font-semibold">Screening Room</p>
+                  <p className="font-semibold">{t('location.interior')}</p>
                 </div>
               </div>
             </div>
@@ -111,23 +112,23 @@ const Location = () => {
             </Card>
 
             <Card className="p-6 bg-card border-border shadow-card">
-              <h4 className="text-lg font-semibold mb-4 text-foreground">Getting There</h4>
+              <h4 className="text-lg font-semibold mb-4 text-foreground">{t('location.getting')}</h4>
               <div className="space-y-3 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span><strong>Metro:</strong> L1 Red Line - Hostafrancs Station (5 min walk)</span>
+                  <span><strong>Metro:</strong> {t('location.metro')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span><strong>Bus:</strong> Lines H16, 23, 32 - Lleida/Gran Via stop</span>
+                  <span><strong>Bus:</strong> {t('location.bus')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span><strong>Airport:</strong> 30 minutes by Aerobus + Metro</span>
+                  <span><strong>Airport:</strong> {t('location.airport')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span><strong>Parking:</strong> BSM Sants (2 blocks away)</span>
+                  <span><strong>Parking:</strong> {t('location.parking')}</span>
                 </div>
               </div>
             </Card>

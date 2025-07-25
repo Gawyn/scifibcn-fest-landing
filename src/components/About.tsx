@@ -1,27 +1,29 @@
 import { Card } from '@/components/ui/card';
 import { Film, Zap, Users, Globe } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const About = () => {
+  const { t } = useTranslation();
   const features = [
     {
       icon: Film,
-      title: "Cutting-Edge Cinema",
-      description: "Discover the latest in sci-fi filmmaking with premieres, documentaries, and experimental works that push the boundaries of storytelling."
+      title: t('about.feature1.title'),
+      description: t('about.feature1.description')
     },
     {
       icon: Zap,
-      title: "Immersive Technology", 
-      description: "Experience films with state-of-the-art projection systems, VR experiences, and interactive installations that bring stories to life."
+      title: t('about.feature2.title'), 
+      description: t('about.feature2.description')
     },
     {
       icon: Users,
-      title: "Global Community",
-      description: "Connect with filmmakers, fans, and industry professionals from around the world who share a passion for science fiction."
+      title: t('about.feature3.title'),
+      description: t('about.feature3.description')
     },
     {
       icon: Globe,
-      title: "International Focus",
-      description: "Showcasing diverse voices and perspectives from global sci-fi cinema, featuring films from emerging and established filmmakers."
+      title: t('about.feature4.title'),
+      description: t('about.feature4.description')
     }
   ];
 
@@ -30,12 +32,10 @@ const About = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-            About SciFi BCN
+            {t('about.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Founded in 2020, SciFi BCN has become the Mediterranean's leading science fiction film festival. 
-            We celebrate the genre's ability to explore complex themes, envision possible futures, and challenge 
-            our understanding of technology, humanity, and the universe.
+            {t('about.description')}
           </p>
         </div>
 

@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/hooks/useTranslation';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,8 +19,8 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Schedule', href: '#schedule' },
-    { name: 'Films', href: '#films' },
+    { name: t('nav.schedule'), href: '#schedule' },
+    { name: t('nav.films'), href: '#films' },
   ];
 
   return (
@@ -46,11 +49,13 @@ const Navigation = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
                 </a>
               ))}
+              <LanguageSwitcher />
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="sm"
