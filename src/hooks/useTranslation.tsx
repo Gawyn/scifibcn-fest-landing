@@ -177,7 +177,7 @@ interface TranslationProviderProps {
 }
 
 export const TranslationProvider = ({ children }: TranslationProviderProps) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('ca');
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;
