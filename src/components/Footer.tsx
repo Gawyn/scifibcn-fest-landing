@@ -40,10 +40,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-foreground">{t('footer.quicklinks')}</h4>
             <ul className="space-y-2">
-              <li><a href="#schedule" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.schedule')}</a></li>
-              <li><a href="#films" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.films')}</a></li>
               <li><a href="#location" className="text-muted-foreground hover:text-primary transition-colors">{t('location.title')}</a></li>
-              <li><a href="#tickets" className="text-muted-foreground hover:text-primary transition-colors">{t('footer.tickets')}</a></li>
             </ul>
           </div>
 
@@ -51,9 +48,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-foreground">{t('footer.contact')}</h4>
             <div className="space-y-2 text-muted-foreground">
-              <p>info@scifibcn.com</p>
-              <p>+34 93 426 18 50</p>
-              <p>Carrer de Lleida, 59<br />08004 Barcelona, Spain</p>
+              <p>cristian@scifibcn.com</p>
+              <p>Carrer d'Olzinelles 31<br />08014 Barcelona, Spain</p>
             </div>
           </div>
         </div>

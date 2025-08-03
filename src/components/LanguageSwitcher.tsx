@@ -29,8 +29,8 @@ const LanguageSwitcher = () => {
         className="flex items-center gap-2 text-foreground hover:text-primary"
       >
         <Globe size={16} />
-        <span className="hidden sm:inline">{currentLanguage?.flag} {currentLanguage?.name}</span>
-        <span className="sm:hidden">{currentLanguage?.flag}</span>
+        <span className="hidden sm:inline">{currentLanguage?.name}</span>
+        <span className="sm:hidden">{currentLanguage?.name}</span>
         <ChevronDown size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </Button>
 
@@ -52,7 +52,6 @@ const LanguageSwitcher = () => {
                   language === lang.code ? 'bg-primary text-primary-foreground' : 'text-foreground'
                 }`}
               >
-                <span>{lang.flag}</span>
                 <span>{lang.name}</span>
               </button>
             ))}

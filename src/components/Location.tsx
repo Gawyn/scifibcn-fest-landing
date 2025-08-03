@@ -10,22 +10,7 @@ const Location = () => {
     {
       icon: MapPin,
       label: t('location.address'),
-      value: "Carrer de Lleida, 59, 08004 Barcelona, Spain"
-    },
-    {
-      icon: Phone,
-      label: t('location.phone'),
-      value: "+34 93 426 18 50"
-    },
-    {
-      icon: Mail,
-      label: t('location.email'),
-      value: "info@scifibcn.com"
-    },
-    {
-      icon: Clock,
-      label: t('location.hours'),
-      value: t('location.hours.value')
+      value: "Lleialtat Santsenca, Carrer d'Olzinelles, 31, Sants-Montjuïc, 08014, Barcelona"
     }
   ];
 
@@ -36,9 +21,11 @@ const Location = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             {t('location.title')}
           </h2>
+          {/*
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('location.description')}
           </p>
+          */}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -59,12 +46,6 @@ const Location = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-border">
-                <p className="text-sm text-muted-foreground">
-                  {t('location.transport')}
-                </p>
               </div>
             </Card>
 
@@ -99,7 +80,7 @@ const Location = () => {
           <div className="space-y-6">
             <Card className="p-1 bg-card border-border shadow-card overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.6089084571087!2d2.1504!3d41.3754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49f9e4f5b5555%3A0x5f5555555555555!2sCarrer%20de%20Lleida%2C%2059%2C%2008004%20Barcelona%2C%20Spain!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.056857748544!2d2.134106975948478!3d41.372849396897045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a498851477e9bd%3A0x223f4aa26a87e0c7!2sLleialtat%20Santsenca!5e0!3m2!1sen!2sus!4v1754185108836!5m2!1sen!2sus"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
@@ -111,27 +92,6 @@ const Location = () => {
               ></iframe>
             </Card>
 
-            <Card className="p-6 bg-card border-border shadow-card">
-              <h4 className="text-lg font-semibold mb-4 text-foreground">{t('location.getting')}</h4>
-              <div className="space-y-3 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span><strong>Metro:</strong> {t('location.metro')}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span><strong>Bus:</strong> {t('location.bus')}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span><strong>Airport:</strong> {t('location.airport')}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span><strong>Parking:</strong> {t('location.parking')}</span>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
       </div>
