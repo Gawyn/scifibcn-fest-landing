@@ -148,7 +148,7 @@ const translations = {
     'footer.press': 'Kit de Prensa',
     
     // Rules & Terms
-    'rules.title': 'Reglas y Términos',
+    'rules.title': 'Reglas y Condiciones',
     'rules.genre.title': 'Género',
     'rules.genre.content': 'Todos los cortometrajes presentados deben pertenecer claramente al género de ciencia ficción o explorar elementos especulativos conectados con la ciencia ficción. Las obras de géneros adyacentes (fantasía, terror, experimental) solo serán consideradas si tienen un fuerte componente de ciencia ficción.',
     'rules.completion.title': 'Fecha de Finalización',
@@ -177,7 +177,7 @@ const translations = {
     // Navigation
     'nav.schedule': 'Programació',
     'nav.films': 'Pel·lícules',
-    'nav.rules': 'Regles i Termes',
+    'nav.rules': 'Regles i condicions',
     
     // Hero
     'hero.title': 'SciFi BCN',
@@ -228,7 +228,7 @@ const translations = {
     'footer.press': 'Kit de Premsa',
     
     // Rules & Terms
-    'rules.title': 'Regles i Termes',
+    'rules.title': 'Regles i Condicions',
     'rules.genre.title': 'Gènere',
     'rules.genre.content': 'Tots els curtmetratges presentats han de pertànyer clarament al gènere de ciència-ficció o explorar elements especulatius connectats amb la ciència-ficció. Les obres de gèneres adjacents (fantasia, terror, experimental) només seran considerades si tenen un fort component de ciència-ficció.',
     'rules.completion.title': 'Data de Finalització',
