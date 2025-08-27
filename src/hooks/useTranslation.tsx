@@ -263,9 +263,18 @@ export const TranslationProvider = ({ children }: TranslationProviderProps) => {
   const { locale } = useParams<{ locale: string }>();
   const navigate = useNavigate();
   const location = useLocation();
-  const [language, setLanguage] = useState<Language>('ca');
+  
+  // Initialize language from URL parameter or default to 'ca'
+  const getInitialLanguage = (): Language => {
+    if (locale && ['en', 'es', 'ca'].includes(locale)) {
+      return locale as Language;
+    }
+    return 'ca';
+  };
+  
+  const [language, setLanguage] = useState<Language>(getInitialLanguage);
 
-  // Set language from URL parameter
+  // Update language when URL parameter changes
   useEffect(() => {
     if (locale && ['en', 'es', 'ca'].includes(locale)) {
       setLanguage(locale as Language);
