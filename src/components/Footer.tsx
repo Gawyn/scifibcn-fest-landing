@@ -1,8 +1,9 @@
 import { Twitter, Instagram, Facebook, Youtube } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from '@/hooks/useTranslation';
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, getLocalizedPath } = useTranslation();
   const socialLinks = [
     { name: 'Twitter', icon: Twitter, href: '#' },
     { name: 'Instagram', icon: Instagram, href: '#' },
@@ -41,6 +42,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-foreground">{t('footer.quicklinks')}</h4>
             <ul className="space-y-2">
               <li><a href="#location" className="text-muted-foreground hover:text-primary transition-colors">{t('location.title')}</a></li>
+              <li><Link to={getLocalizedPath('/rules')} className="text-muted-foreground hover:text-primary transition-colors">{t('nav.rules')}</Link></li>
             </ul>
           </div>
 

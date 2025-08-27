@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 export type Language = 'en' | 'es' | 'ca';
 
@@ -6,6 +7,7 @@ interface TranslationContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  getLocalizedPath: (path: string) => string;
 }
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
@@ -15,6 +17,7 @@ const translations = {
     // Navigation
     'nav.schedule': 'Schedule',
     'nav.films': 'Films',
+    'nav.rules': 'Rules & Terms',
     
     // Hero
     'hero.title': 'SciFi BCN',
@@ -62,12 +65,39 @@ const translations = {
     'footer.copyright': '© 2024 SciFi BCN Festival. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
-    'footer.press': 'Press Kit'
+    'footer.press': 'Press Kit',
+    
+    // Rules & Terms
+    'rules.title': 'Rules & Terms',
+    'rules.genre.title': 'Genre',
+    'rules.genre.content': 'All submitted short films must clearly belong to the science fiction genre or explore speculative elements connected to science fiction. Works from adjacent genres (fantasy, horror, experimental) will only be considered if they have a strong science-fiction component.',
+    'rules.completion.title': 'Completion Date',
+    'rules.completion.content': 'Films must have been completed after December 31, 2024.',
+    'rules.duration.title': 'Duration',
+    'rules.duration.content': 'The maximum runtime is 20 minutes, including credits.',
+    'rules.format.title': 'Format & Screening',
+    'rules.format.content': 'Films must be submitted via FilmFreeWay with an online screener (Vimeo, FilmFreeWay player, etc.). If selected, the festival may request a high-quality screening copy (digital file, .mov or .mp4, minimum resolution Full HD 1080p).',
+    'rules.language.title': 'Language',
+    'rules.language.content': 'Films not in English, Catalan, or Spanish must include English subtitles at the time of submission. If selected, the festival may request additional subtitles (Catalan/Spanish) for screening purposes.',
+    'rules.premiere.title': 'Premiere Status',
+    'rules.premiere.content': 'There is no premiere requirement. Films that have screened at other festivals or online are still eligible, provided they meet the other rules.',
+    'rules.submission.title': 'Submission Rights',
+    'rules.submission.content': 'The person submitting the film must own the rights or have full authorization to submit the work to the festival.',
+    'rules.screenings.title': 'Screenings & Promotion',
+    'rules.screenings.content': 'By submitting, filmmakers grant SciFiBCN the right to screen the film during the festival and to use stills, posters, and short clips (up to 30 seconds) for promotional purposes.',
+    'rules.awards.title': 'Awards',
+    'rules.awards.content': 'Films in the Official Competition are eligible for the following awards:',
+    'rules.awards.bestFilm': 'Best Short Film – Official Competition',
+    'rules.awards.audience': 'Audience Award',
+    'rules.awards.jury': 'The Jury\'s decision is final.',
+    'rules.acceptance.title': 'Acceptance of Rules',
+    'rules.acceptance.content': 'Submission of a film to SciFiBCN implies full acceptance of these rules and terms. The festival reserves the right to resolve any cases not covered here.'
   },
   es: {
     // Navigation
     'nav.schedule': 'Programación',
     'nav.films': 'Películas',
+    'nav.rules': 'Reglas y Términos',
     
     // Hero
     'hero.title': 'SciFi BCN',
@@ -115,12 +145,39 @@ const translations = {
     'footer.copyright': '© 2024 Festival SciFi BCN. Todos los derechos reservados.',
     'footer.privacy': 'Política de Privacidad',
     'footer.terms': 'Términos de Servicio',
-    'footer.press': 'Kit de Prensa'
+    'footer.press': 'Kit de Prensa',
+    
+    // Rules & Terms
+    'rules.title': 'Reglas y Términos',
+    'rules.genre.title': 'Género',
+    'rules.genre.content': 'Todos los cortometrajes presentados deben pertenecer claramente al género de ciencia ficción o explorar elementos especulativos conectados con la ciencia ficción. Las obras de géneros adyacentes (fantasía, terror, experimental) solo serán consideradas si tienen un fuerte componente de ciencia ficción.',
+    'rules.completion.title': 'Fecha de Finalización',
+    'rules.completion.content': 'Las películas deben haber sido completadas después del 31 de diciembre de 2024.',
+    'rules.duration.title': 'Duración',
+    'rules.duration.content': 'La duración máxima es de 20 minutos, incluyendo créditos.',
+    'rules.format.title': 'Formato y Proyección',
+    'rules.format.content': 'Las películas deben ser presentadas a través de FilmFreeWay con un screener online (Vimeo, reproductor de FilmFreeWay, etc.). Si son seleccionadas, el festival puede solicitar una copia de proyección de alta calidad (archivo digital, .mov o .mp4, resolución mínima Full HD 1080p).',
+    'rules.language.title': 'Idioma',
+    'rules.language.content': 'Las películas que no estén en inglés, catalán o español deben incluir subtítulos en inglés al momento de la presentación. Si son seleccionadas, el festival puede solicitar subtítulos adicionales (catalán/español) para fines de proyección.',
+    'rules.premiere.title': 'Estado de Estreno',
+    'rules.premiere.content': 'No hay requisito de estreno. Las películas que se hayan proyectado en otros festivales o en línea siguen siendo elegibles, siempre que cumplan con las otras reglas.',
+    'rules.submission.title': 'Derechos de Presentación',
+    'rules.submission.content': 'La persona que presenta la película debe poseer los derechos o tener autorización completa para presentar la obra al festival.',
+    'rules.screenings.title': 'Proyecciones y Promoción',
+    'rules.screenings.content': 'Al presentar, los cineastas otorgan a SciFiBCN el derecho de proyectar la película durante el festival y de usar fotogramas, carteles y clips cortos (hasta 30 segundos) para fines promocionales.',
+    'rules.awards.title': 'Premios',
+    'rules.awards.content': 'Las películas en la Competencia Oficial son elegibles para los siguientes premios:',
+    'rules.awards.bestFilm': 'Mejor Cortometraje – Competencia Oficial',
+    'rules.awards.audience': 'Premio del Público',
+    'rules.awards.jury': 'La decisión del Jurado es final.',
+    'rules.acceptance.title': 'Aceptación de las Reglas',
+    'rules.acceptance.content': 'La presentación de una película a SciFiBCN implica la aceptación completa de estas reglas y términos. El festival se reserva el derecho de resolver cualquier caso no cubierto aquí.'
   },
   ca: {
     // Navigation
     'nav.schedule': 'Programació',
     'nav.films': 'Pel·lícules',
+    'nav.rules': 'Regles i Termes',
     
     // Hero
     'hero.title': 'SciFi BCN',
@@ -168,7 +225,33 @@ const translations = {
     'footer.copyright': '© 2024 Festival SciFi BCN. Tots els drets reservats.',
     'footer.privacy': 'Política de Privacitat',
     'footer.terms': 'Termes de Servei',
-    'footer.press': 'Kit de Premsa'
+    'footer.press': 'Kit de Premsa',
+    
+    // Rules & Terms
+    'rules.title': 'Regles i Termes',
+    'rules.genre.title': 'Gènere',
+    'rules.genre.content': 'Tots els curtmetratges presentats han de pertànyer clarament al gènere de ciència-ficció o explorar elements especulatius connectats amb la ciència-ficció. Les obres de gèneres adjacents (fantasia, terror, experimental) només seran considerades si tenen un fort component de ciència-ficció.',
+    'rules.completion.title': 'Data de Finalització',
+    'rules.completion.content': 'Les pel·lícules han d\'haver estat completades després del 31 de desembre de 2024.',
+    'rules.duration.title': 'Durada',
+    'rules.duration.content': 'La durada màxima és de 20 minuts, incloent crèdits.',
+    'rules.format.title': 'Format i Projecció',
+    'rules.format.content': 'Les pel·lícules han de ser presentades a través de FilmFreeWay amb un screener online (Vimeo, reproductor de FilmFreeWay, etc.). Si són seleccionades, el festival pot sol·licitar una còpia de projecció d\'alta qualitat (arxiu digital, .mov o .mp4, resolució mínima Full HD 1080p).',
+    'rules.language.title': 'Idioma',
+    'rules.language.content': 'Les pel·lícules que no estiguin en anglès, català o espanyol han d\'incloure subtítols en anglès al moment de la presentació. Si són seleccionades, el festival pot sol·licitar subtítols addicionals (català/espanyol) per a fins de projecció.',
+    'rules.premiere.title': 'Estat d\'Estrena',
+    'rules.premiere.content': 'No hi ha requisit d\'estrena. Les pel·lícules que s\'hagin projectat en altres festivals o en línia segueixen sent elegibles, sempre que compleixin amb les altres regles.',
+    'rules.submission.title': 'Drets de Presentació',
+    'rules.submission.content': 'La persona que presenta la pel·lícula ha de posseir els drets o tenir autorització completa per presentar l\'obra al festival.',
+    'rules.screenings.title': 'Projeccions i Promoció',
+    'rules.screenings.content': 'En presentar, els cineastes atorguen a SciFiBCN el dret de projectar la pel·lícula durant el festival i d\'usar fotogrames, cartells i clips curts (fins a 30 segons) per a fins promocionals.',
+    'rules.awards.title': 'Premis',
+    'rules.awards.content': 'Les pel·lícules en la Competència Oficial són elegibles per als següents premis:',
+    'rules.awards.bestFilm': 'Millor Curtmetratge – Competència Oficial',
+    'rules.awards.audience': 'Premi del Públic',
+    'rules.awards.jury': 'La decisió del Jurat és final.',
+    'rules.acceptance.title': 'Acceptació de les Regles',
+    'rules.acceptance.content': 'La presentació d\'una pel·lícula a SciFiBCN implica l\'acceptació completa d\'aquestes regles i termes. El festival es reserva el dret de resoldre qualsevol cas no cobert aquí.'
   }
 };
 
@@ -177,14 +260,38 @@ interface TranslationProviderProps {
 }
 
 export const TranslationProvider = ({ children }: TranslationProviderProps) => {
+  const { locale } = useParams<{ locale: string }>();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [language, setLanguage] = useState<Language>('ca');
+
+  // Set language from URL parameter
+  useEffect(() => {
+    if (locale && ['en', 'es', 'ca'].includes(locale)) {
+      setLanguage(locale as Language);
+    }
+  }, [locale]);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;
   };
 
+  const getLocalizedPath = (path: string): string => {
+    // Remove leading slash if present
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    return `/${language}/${cleanPath}`;
+  };
+
+  const handleSetLanguage = (lang: Language) => {
+    setLanguage(lang);
+    // Get current path without locale
+    const currentPath = location.pathname.replace(/^\/[a-z]{2}/, '') || '/';
+    const newPath = currentPath === '/' ? `/${lang}` : `/${lang}${currentPath}`;
+    navigate(newPath, { replace: true });
+  };
+
   return (
-    <TranslationContext.Provider value={{ language, setLanguage, t }}>
+    <TranslationContext.Provider value={{ language, setLanguage: handleSetLanguage, t, getLocalizedPath }}>
       {children}
     </TranslationContext.Provider>
   );
