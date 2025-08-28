@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 export type Language = 'en' | 'es' | 'ca';
@@ -264,22 +264,23 @@ export const TranslationProvider = ({ children }: TranslationProviderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  // Initialize language from URL parameter or default to 'ca'
-  const getInitialLanguage = (): Language => {
-    if (locale && ['en', 'es', 'ca'].includes(locale)) {
-      return locale as Language;
+  // Extract locale from pathname
+  const pathnameLocale = location.pathname.split('/')[1];
+  
+  // Compute current language from pathname (more reliable than useParams)
+  const currentLanguage = useMemo((): Language => {
+    if (pathnameLocale && ['en', 'es', 'ca'].includes(pathnameLocale)) {
+      return pathnameLocale as Language;
     }
     return 'ca';
-  };
+  }, [pathnameLocale]);
   
-  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const [language, setLanguage] = useState<Language>(currentLanguage);
 
   // Update language when URL parameter changes
   useEffect(() => {
-    if (locale && ['en', 'es', 'ca'].includes(locale)) {
-      setLanguage(locale as Language);
-    }
-  }, [locale]);
+    setLanguage(currentLanguage);
+  }, [currentLanguage]);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;
