@@ -14,7 +14,7 @@ const Hero = () => {
           <img 
             src={scifiBcnLogo} 
             alt="SciFi BCN Festival Logo" 
-            className="mx-auto max-w-3xl w-full h-auto filter drop-shadow-2xl"
+            className="mx-auto max-w-3xl w-full h-auto max-h-[50vh] object-contain filter drop-shadow-2xl"
           />
         </div>
 

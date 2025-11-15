@@ -124,3 +124,4 @@ const RulesAndTerms = () => {
 };
 
 export default RulesAndTerms;
+
