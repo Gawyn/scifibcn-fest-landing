@@ -10,7 +10,7 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         {/* Logo */}
-        <div className="mb-8 animate-float">
+        <div className="mb-8">
           <img 
             src={scifiBcnLogo} 
             alt="SciFi BCN Festival Logo" 
