@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/hooks/useTranslation';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { HEADER_COLOR } from '@/lib/utils';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-            <Link to={getLocalizedPath('/')} className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:animate-glow-pulse transition-all">
+            <Link
+              to={getLocalizedPath('/')}
+              className="text-2xl font-bold hover:animate-glow-pulse transition-all"
+              style={{ color: HEADER_COLOR }}
+            >
               SciFi BCN
             </Link>
           </div>

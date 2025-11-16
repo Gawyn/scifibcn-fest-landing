@@ -1,6 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { Film, Zap, Users, Globe } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
+import { HEADER_COLOR } from '@/lib/utils';
 
 const About = () => {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ const About = () => {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6" style={{ color: HEADER_COLOR }}>
             {t('about.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -46,7 +47,7 @@ const About = () => {
                 <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mb-4 group-hover:shadow-neon transition-all duration-300">
                   <feature.icon className="w-8 h-8 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">{feature.title}</h3>
+                <h3 className="text-xl font-semibold mb-3" style={{ color: HEADER_COLOR }}>{feature.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             </Card>

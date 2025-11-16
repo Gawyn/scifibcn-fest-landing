@@ -1,6 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
+import { HEADER_COLOR } from '@/lib/utils';
 import venueExterior from '@/assets/venue-exterior.jpg';
 import venueInterior from '@/assets/venue-interior.jpg';
 
@@ -18,7 +19,7 @@ const Location = () => {
     <section id="location" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-space">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6" style={{ color: HEADER_COLOR }}>
             {t('location.title')}
           </h2>
           {/*
@@ -32,7 +33,7 @@ const Location = () => {
           {/* Venue Information */}
           <div className="space-y-8">
             <Card className="p-8 bg-card border-border shadow-card">
-              <h3 className="text-2xl font-bold mb-6 text-foreground">{t('location.venue')}</h3>
+              <h3 className="text-2xl font-bold mb-6" style={{ color: HEADER_COLOR }}>{t('location.venue')}</h3>
               
               <div className="space-y-6">
                 {venueDetails.map((detail, index) => (

@@ -1,6 +1,7 @@
 import { Twitter, Instagram, Facebook, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '@/hooks/useTranslation';
+import { HEADER_COLOR } from '@/lib/utils';
 
 const Footer = () => {
   const { t, getLocalizedPath } = useTranslation();
@@ -17,7 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <h3 className="text-2xl font-bold" style={{ color: HEADER_COLOR }}>
               SciFi BCN
             </h3>
             <p className="text-muted-foreground">
@@ -39,7 +40,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">{t('footer.quicklinks')}</h4>
+            <h4 className="text-lg font-semibold" style={{ color: HEADER_COLOR }}>{t('footer.quicklinks')}</h4>
             <ul className="space-y-2">
               <li><a href="#location" className="text-muted-foreground hover:text-primary transition-colors">{t('location.title')}</a></li>
               <li><Link to={getLocalizedPath('/rules')} className="text-muted-foreground hover:text-primary transition-colors">{t('nav.rules')}</Link></li>
@@ -48,7 +49,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">{t('footer.contact')}</h4>
+            <h4 className="text-lg font-semibold" style={{ color: HEADER_COLOR }}>{t('footer.contact')}</h4>
             <div className="space-y-2 text-muted-foreground">
               <p>cristian@scifibcn.com</p>
               <p>Carrer d'Olzinelles 31<br />08014 Barcelona, Spain</p>

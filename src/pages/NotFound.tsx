@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
+import { HEADER_COLOR } from "@/lib/utils";
 
 const NotFound = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
+        <h1 className="text-4xl font-bold mb-4" style={{ color: HEADER_COLOR }}>404</h1>
         <p className="text-xl text-muted-foreground mb-4">Oops! Page not found</p>
         <Link to={getLocalizedPath('/')} className="text-primary hover:underline">
           Return to Home

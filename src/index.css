@@ -15,7 +15,8 @@
     --popover: 220 23% 9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 197 100% 60%;
+    /* Match HEADER_COLOR (#fbc313) */
+    --primary: 46 97% 53%;
     --primary-foreground: 220 27% 6%;
 
     --secondary: 220 23% 12%;
@@ -42,7 +43,7 @@
     --deep-space: 220 27% 6%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(197 100% 60%), hsl(280 100% 70%));
+    --gradient-primary: linear-gradient(135deg, hsl(46 97% 53%), hsl(46 100% 70%));
     --gradient-space: linear-gradient(180deg, hsl(220 27% 6%), hsl(220 70% 25%));
     --gradient-neon: linear-gradient(45deg, hsl(197 100% 60%), hsl(280 100% 70%), hsl(320 100% 75%));
     

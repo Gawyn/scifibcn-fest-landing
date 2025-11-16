@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn, HEADER_COLOR } from "@/lib/utils"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -39,6 +39,7 @@ const CardTitle = React.forwardRef<
       "text-2xl font-semibold leading-none tracking-tight",
       className
     )}
+    style={{ color: HEADER_COLOR }}
     {...props}
   />
 ))
