@@ -21,7 +21,7 @@ const translations = {
     
     // Hero
     'hero.title': 'SciFi BCN',
-    'hero.description': 'Barcelona\'s pioneering science fiction festival, bringing premiere short films, classic genre feature films, and all kinds of activities for all audiences:',
+    'hero.description': 'Barcelona\'s pioneering science fiction festival, bringing premiere short films, classic genre feature films, and all kinds of activities for all kinds of audiences:',
     'hero.date': 'March 6-7, 2026',
     'hero.location': 'Barcelona, Spain',
     'hero.cta.schedule': 'View Schedule',
